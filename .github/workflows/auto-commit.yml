@@ -1,0 +1,21 @@
+name: Auto Commit
+on:
+  schedule:
+    - cron: "0 * * * *" # Cada hora
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Auto commit
+        run: |
+          git add .
+          git commit -m "Auto commit from GitHub Actions"
+          git push
