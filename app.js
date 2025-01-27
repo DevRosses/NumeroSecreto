@@ -1,13 +1,42 @@
 let numeroMaximo = 10;
-let numeroSecreto = Math.floor(Math.random() * numeroMaximo) + 1;
-let numeroUsuario = 0;
+let numeroSecreto = generarNumeroSecreto();
 let intentos = 1;
-//let palabraIntento = "intento"; en combinacion con linea 36, se suplanta por ternarios en linea 21
 let maximosIntentos = 3;
 
+function verificarIntento() {
+  let numeroUsuario = parseInt(document.getElementById("valorUsuario").value);
+  console.log(numeroUsuario);
+  console.log(numeroSecreto);
+  console.log(numeroSecreto == numeroUsuario);
+  
 
-function intentoDeUsuario() {
-  alert("Click desde el boton");
+  while (numeroUsuario != numeroSecreto) {
+
+    if (numeroUsuario == numeroSecreto) {
+      asignarTextoElemento(
+        "p",
+        `Acertaste, el número es ${numeroUsuario}. Lo lograste en ${intentos} ${
+          intentos == 1 ? "vez" : "veces"
+        }.`
+      );
+    } else {
+      if (numeroUsuario > numeroSecreto) {
+        asignarTextoElemento("p", "El número secreto es menor");
+      } else {
+        asignarTextoElemento("p", "El número secreto es mayor");
+      }
+      intentos++;
+      if (intentos > maximosIntentos) {
+        asignarTextoElemento(
+          "p",
+          `llegaste al número máximo de ${maximosIntentos} intentos`
+        );
+
+        break;
+      }
+    }
+  }
+  return;
 }
 
 function asignarTextoElemento(elemento, texto) {
@@ -15,43 +44,9 @@ function asignarTextoElemento(elemento, texto) {
   titulo.innerHTML = texto;
 }
 
+function generarNumeroSecreto() {
+  return Math.floor(Math.random() * numeroMaximo) + 1;
+}
+
 asignarTextoElemento("h1", "Juego del número secreto");
 asignarTextoElemento("p", `Indicame un numero entre 1 y ${numeroMaximo}`);
-
-/*
-while (numeroUsuario != numeroSecreto) {
-  numeroUsuario = parseInt(
-    prompt(`Me indicas un numero entre 1 y ${numeroMaximo} por favor:`)
-  ); //parseInt() conviert el string en typeof numero entero.
-
-  if (numeroUsuario == numeroSecreto) {
-    // Acertamos, fue veradera la condición
-    alert(
-      //template string con comillas invertidas para agregar variables
-      `Acertaste, el número es ${numeroUsuario}. Lo lograste en ${intentos} ${
-        intentos == 1 ? "vez" : "veces"
-      }.`
-    );
-  } // la condición no se cumplio
-  else {
-    //alert("Lo siento, no acertaste el número");
-    // Condicional anidado
-    if (numeroUsuario > numeroSecreto) {
-      alert("El número secreto es menor");
-    } else {
-      alert("El número secreto es mayor");
-    }
-    //Incrementamos el contador cuando no acierta
-    //intentos = intentos + 1;
-    //intentos += 1;
-    intentos++;
-    //palabraIntento = "intentos";
-
-    //Condicion para salir del bucle!!
-    if (intentos > maximosIntentos) {
-      alert(`llegaste al número máximo de ${maximosIntentos} intentos`);
-      break;
-    }
-  }
-}
-*/
