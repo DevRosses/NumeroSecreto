@@ -20,6 +20,7 @@ body {
   text-align: center;
 }
 
+
 body::before {
   background-image: url("img/code.png");
   background-repeat: no-repeat;
@@ -64,7 +65,25 @@ body::before {
   font-weight: 700;
   border: none;
   margin-top: 1rem;
+  animation: vibrate 0.8s infinite alternate;
 }
+
+  @keyframes vibrate {
+        0% {
+            transform: translateX(1px);
+        }
+        100% {
+            transform: translateX(4px);
+        }
+    }
+
+.container__boton:hover {
+    background-color: #0f5bb5;
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+}
+
+
 
 .container__boton:disabled {
   background: #898989;
@@ -101,6 +120,8 @@ h1 {
   font-family: "Chakra Petch", sans-serif;
   font-size: 36px;
   padding-bottom: 1rem;
+  animation: fadeInText 1.5s ease-in-out;
+  animation: vibrate 1.2s infinite alternate;
 }
 
 p,
@@ -111,6 +132,18 @@ button {
 .texto__parrafo {
   font-size: 18px;
   font-weight: 400;
+  animation: fadeInText 2s ease-in-out;
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* IMAGEN */
@@ -150,7 +183,21 @@ button {
 
   .container__imagen-persona {
     max-width: 60%;
+     display: block;
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
   }
+
+   @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 }
 
 /* Desktop */
@@ -175,6 +222,16 @@ button {
     flex: 1;
     padding-right: 3rem;
   }
+
+   .container__input {
+        border: 2px solid #1875e8;
+        transition: border-color 0.3s ease-in-out;
+    }
+
+    .container__input:focus {
+        border-color: #0f5bb5;
+        outline: none;
+    }
 
   .container__botones {
     justify-content: flex-start;

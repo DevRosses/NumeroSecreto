@@ -77,7 +77,7 @@ function asignarTextoElemento(elemento, texto) {
 
 // Establece las condiciones inciales necesarias
 function condicionesIniciales() {
-  asignarTextoElemento("h1", "Juego del número secreto");
+  asignarTextoElemento("h1", "Descubri el número secreto");
   asignarTextoElemento("p", `Indicame un numero entre 1 y ${numeroMaximo}`);
   numeroSecreto = generarNumeroSecreto();
   intentos = 1;
