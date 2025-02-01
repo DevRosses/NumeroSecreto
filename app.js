@@ -52,16 +52,20 @@ function generarNumeroSecreto() {
   console.log(`numero generado: ${numeroGenerado}`);
   console.log(listaNumeroSorteados);
 
-  //si el numero generado esta incluido en la lista hacemos una operacion o sino otra.
-  if (listaNumeroSorteados.includes(numeroGenerado)) {
-    // en el caso que este en la lista se aplica la recursividad, vuelve a ejecutar la funcion a si misma.
-    return generarNumeroSecreto();
-  
+  if (listaNumeroSorteados.length == numeroMaximo) {
+    asignarTextoElemento('p', 'Ya se sortearon todos los números posibles.')
+    return null;
   } else {
-    //guardar numero generado para adicionalo a la lista y qu no vuelva a ser jugado
-    listaNumeroSorteados.push(numeroGenerado);
-    return numeroGenerado
-}
+    //si el numero generado esta incluido en la lista hacemos una operacion o sino otra.
+    if (listaNumeroSorteados.includes(numeroGenerado)) {
+      // en el caso que este en la lista se aplica la recursividad, vuelve a ejecutar la funcion a si misma.
+      return generarNumeroSecreto();
+    } else {
+      //guardar numero generado para adicionalo a la lista y qu no vuelva a ser jugado
+      listaNumeroSorteados.push(numeroGenerado);
+      return numeroGenerado;
+    }
+  }
 
 }
 
