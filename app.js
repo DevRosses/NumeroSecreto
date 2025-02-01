@@ -2,6 +2,8 @@ let numeroMaximo = 10;
 let numeroSecreto = 0;
 let intentos = 0;
 let maximosIntentos = 3;
+let listaNumeroSorteados = [];
+
 
 function verificarIntento() {
   //Tomo valor del input.
@@ -43,15 +45,33 @@ function limpiarCaja() {
   document.querySelector("#valorUsuario").value = "";
 }
 
+//Genera un numero aleatorio
 function generarNumeroSecreto() {
-  return Math.floor(Math.random() * numeroMaximo) + 1;
+  let numeroGenerado = Math.floor(Math.random() * numeroMaximo) + 1;
+
+  console.log(`numero generado: ${numeroGenerado}`);
+  console.log(listaNumeroSorteados);
+
+  //si el numero generado esta incluido en la lista hacemos una operacion o sino otra.
+  if (listaNumeroSorteados.includes(numeroGenerado)) {
+    // en el caso que este en la lista se aplica la recursividad, vuelve a ejecutar la funcion a si misma.
+    return generarNumeroSecreto();
+  
+  } else {
+    //guardar numero generado para adicionalo a la lista y qu no vuelva a ser jugado
+    listaNumeroSorteados.push(numeroGenerado);
+    return numeroGenerado
 }
 
+}
+
+//Asigna titulo a un elemento y a la vez un texto
 function asignarTextoElemento(elemento, texto) {
   let titulo = document.querySelector(elemento);
   titulo.innerHTML = texto;
 }
 
+// Establece las condiciones inciales necesarias
 function condicionesIniciales() {
   asignarTextoElemento("h1", "Juego del número secreto");
   asignarTextoElemento("p", `Indicame un numero entre 1 y ${numeroMaximo}`);
@@ -59,6 +79,7 @@ function condicionesIniciales() {
   intentos = 1;
 }
 
+// Reinicia las condiciones iniciales 
 function reiniciarJuego() {
   limpiarCaja();
   condicionesIniciales();
