@@ -12,12 +12,13 @@ body {
     #041832 66.67%,
     #01080e 100%
   );
-  height: 100vh;
+ height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   text-align: center;
+  overflow: hidden;
 }
 
 body::before {
