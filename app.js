@@ -9,8 +9,6 @@ let intentos = 0;
 let maximosIntentos = 3;
 let listaNumeroSorteados = [];
 
-
-
 function verificarIntento() {
   //Tomo valor del input.
   let numeroUsuario = parseInt(document.getElementById("valorUsuario").value);
@@ -23,16 +21,17 @@ function verificarIntento() {
       "p",
       `Acertaste! Lo lograste en ${intentos} ${
         intentos == 1 ? "intento" : "intentos"
-      }.`
+      }.`,
+      "fade-fadeInOut"
     );
     //Quita atributo(disabled) al button nuevo juego.
     document.getElementById("reiniciar").removeAttribute("disabled");
   } else {
     //El usuario no acertó.
     if (numeroUsuario > numeroSecreto) {
-      asignarTextoElemento("p", "El número secreto es menor");
+      asignarTextoElemento("p", "El número secreto es menor", "fade-fadeInOut");
     } else {
-      asignarTextoElemento("p", "El número secreto es mayor");
+      asignarTextoElemento("p", "El número secreto es mayor", "fade-fadeInOut");
     }
     intentos++;
     limpiarCaja();
@@ -41,6 +40,7 @@ function verificarIntento() {
         "p",
         `llegaste al número máximo de ${maximosIntentos} intentos`
       );
+      document.getElementById("reiniciar").removeAttribute("disabled");
     }
   }
   return;
@@ -75,18 +75,25 @@ function generarNumeroSecreto() {
 }
 
 //Asigna titulo a un elemento y a la vez un texto
-function asignarTextoElemento(elemento, texto) {
+function asignarTextoElemento(elemento, texto,clase) {
   let titulo = document.querySelector(elemento);
+  titulo.classList.add(clase);
   titulo.innerHTML = texto;
+  setTimeout(() => {
+    titulo.classList.remove(clase);
+  }, 1000);
 }
 
 // Establece las condiciones inciales necesarias
 function condicionesIniciales() {
   asignarTextoElemento("h1", "Descubri el número secreto");
-  asignarTextoElemento("p", `Indicame un numero entre 1 y ${numeroMaximo}`);
+  asignarTextoElemento(
+    "p",
+    `Indicame un numero entre 1 y ${numeroMaximo}`,
+    "fade-fadeInOut"
+  );
   numeroSecreto = generarNumeroSecreto();
   intentos = 1;
-  audioElement.play();
 }
 
 // Reinicia las condiciones iniciales
@@ -106,6 +113,13 @@ function mute() {
     muteButton.innerHTML = '<i class="fa fa-volume-mute"></i>';
   }
   isMuted = !isMuted;
+}
+
+function cambiarAnimacion() {
+  titulo.classList.add("fade-text");
+  setTimeout(() => {
+    titulo.classList.remove("fade-text");
+  }, 1000);
 }
 
 condicionesIniciales();

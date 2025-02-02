@@ -151,7 +151,10 @@ button {
 .texto__parrafo {
   font-size: 18px;
   font-weight: 400;
-  animation: fadeInText 2s ease-in-out;
+}
+
+.fade-fadeInText {
+  animation: fadeInOut 1s ease-in-out;
 }
 
 @keyframes fadeInText {
@@ -162,6 +165,22 @@ button {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.fade-fadeInOut {
+  animation: fadeInOut 1s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
