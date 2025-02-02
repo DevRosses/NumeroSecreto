@@ -1,8 +1,14 @@
+// Seleccionamos el botón y el audio
+const muteButton = document.getElementById("muteButton");
+const audioElement = new Audio("./mp3/Tonebox.mp3");
+let isMuted = false;
+
 let numeroMaximo = 10;
 let numeroSecreto = 0;
 let intentos = 0;
 let maximosIntentos = 3;
 let listaNumeroSorteados = [];
+
 
 
 function verificarIntento() {
@@ -53,7 +59,7 @@ function generarNumeroSecreto() {
   console.log(listaNumeroSorteados);
 
   if (listaNumeroSorteados.length == numeroMaximo) {
-    asignarTextoElemento('p', 'Ya se sortearon todos los números posibles.')
+    asignarTextoElemento("p", "Ya se sortearon todos los números posibles.");
     return null;
   } else {
     //si el numero generado esta incluido en la lista hacemos una operacion o sino otra.
@@ -66,7 +72,6 @@ function generarNumeroSecreto() {
       return numeroGenerado;
     }
   }
-
 }
 
 //Asigna titulo a un elemento y a la vez un texto
@@ -81,13 +86,26 @@ function condicionesIniciales() {
   asignarTextoElemento("p", `Indicame un numero entre 1 y ${numeroMaximo}`);
   numeroSecreto = generarNumeroSecreto();
   intentos = 1;
+  audioElement.play();
 }
 
-// Reinicia las condiciones iniciales 
+// Reinicia las condiciones iniciales
 function reiniciarJuego() {
   limpiarCaja();
   condicionesIniciales();
-  document.getElementById("reiniciar").setAttribute("disabled",true);
+  document.getElementById("reiniciar").setAttribute("disabled", true);
+}
+
+// Añadir un listener para el clic del botón de mute
+function mute() {
+  if (isMuted) {
+    audioElement.play();
+    muteButton.innerHTML = '<i class="fa fa-volume-up"></i>';
+  } else {
+    audioElement.pause();
+    muteButton.innerHTML = '<i class="fa fa-volume-mute"></i>';
+  }
+  isMuted = !isMuted;
 }
 
 condicionesIniciales();

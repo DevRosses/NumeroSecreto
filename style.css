@@ -20,7 +20,6 @@ body {
   text-align: center;
 }
 
-
 body::before {
   background-image: url("img/code.png");
   background-repeat: no-repeat;
@@ -32,6 +31,28 @@ body::before {
   height: 100%;
   opacity: 0.4;
   z-index: -1;
+}
+
+/* Estilos para el botón de silenciar */
+#muteButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#muteButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#muteButton i {
+  font-size: 16px;
 }
 
 .container {
@@ -65,25 +86,23 @@ body::before {
   font-weight: 700;
   border: none;
   margin-top: 1rem;
-  animation: vibrate 0.8s infinite alternate;
+  animation: vibrate 0.6s infinite alternate;
 }
 
-  @keyframes vibrate {
-        0% {
-            transform: translateX(1px);
-        }
-        100% {
-            transform: translateX(4px);
-        }
-    }
+@keyframes vibrate {
+  0% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(4px);
+  }
+}
 
 .container__boton:hover {
-    background-color: #0f5bb5;
-    transform: scale(1.05);
-    transition: 0.3s ease-in-out;
+  background-color: #0f5bb5;
+  transform: scale(1.05);
+  transition: 0.3s ease-in-out;
 }
-
-
 
 .container__boton:disabled {
   background: #898989;
@@ -136,14 +155,14 @@ button {
 }
 
 @keyframes fadeInText {
-    0% {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* IMAGEN */
@@ -183,21 +202,21 @@ button {
 
   .container__imagen-persona {
     max-width: 60%;
-     display: block;
-        opacity: 0;
-        animation: fadeIn 1s ease-in-out forwards;
+    display: block;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
   }
 
-   @keyframes fadeIn {
-        0% {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
     }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 /* Desktop */
@@ -223,15 +242,15 @@ button {
     padding-right: 3rem;
   }
 
-   .container__input {
-        border: 2px solid #1875e8;
-        transition: border-color 0.3s ease-in-out;
-    }
+  .container__input {
+    border: 2px solid #1875e8;
+    transition: border-color 0.3s ease-in-out;
+  }
 
-    .container__input:focus {
-        border-color: #0f5bb5;
-        outline: none;
-    }
+  .container__input:focus {
+    border-color: #0f5bb5;
+    outline: none;
+  }
 
   .container__botones {
     justify-content: flex-start;
