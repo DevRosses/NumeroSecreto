@@ -12,7 +12,7 @@ body {
     #041832 66.67%,
     #01080e 100%
   );
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
