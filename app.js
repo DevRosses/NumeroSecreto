@@ -1,7 +1,7 @@
 // Seleccionamos el botón y el audio
 const muteButton = document.getElementById("muteButton");
 const audioElement = new Audio("./mp3/Tonebox.mp3");
-let isMuted = false;
+let isMuted = true;
 
 let numeroMaximo = 10;
 let numeroSecreto = 0;
